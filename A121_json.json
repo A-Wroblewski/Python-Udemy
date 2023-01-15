@@ -1,0 +1,18 @@
+{
+  "Nome": "Álvaro",
+  "Sobrenome": "Wroblewski",
+  "Idade": 21,
+  "Altura": 1.75,
+  "Endereços": [
+    {
+      "Lugar 1": "eni ayuoki",
+      "Número": 123
+    },
+    {
+      "Lugar 2": "Rua dos Bobos",
+      "Número": 0
+    }
+  ],
+  "Homem": true,
+  "nada": null
+}
