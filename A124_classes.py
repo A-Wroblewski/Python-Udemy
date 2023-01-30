@@ -1,6 +1,6 @@
 class Pessoa:
     def __init__(self, nome, sobrenome):  # sempre reservar o primeiro parâmetro para o "self"
-        self.nome = nome  # self seria o mesmo que a variável
+        self.nome = nome  # self referencia cada instância
         self.sobrenome = sobrenome
 
 pessoa_1 = Pessoa('Álvaro', 'Wroblewski')  # ao chamar a classe, uma nova instância é criada

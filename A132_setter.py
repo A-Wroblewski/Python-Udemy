@@ -9,6 +9,7 @@ class Caneta:
 
     @cor.setter
     def cor(self, valor):
+        print('Setter.')
         self._cor = valor
 
 caneta = Caneta('Azul')

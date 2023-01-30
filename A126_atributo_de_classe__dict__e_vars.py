@@ -16,7 +16,7 @@ print(idade_1.ano_de_nascimento())
 idade_2 = AnoDeNascimento(50, 'maçã')
 print(idade_2.ano_de_nascimento(), '\n')
 
-print(idade_1.__dict__)
+print(idade_1.__dict__)  # __dict__ guarda os valores da instância
 print(idade_2.__dict__, '\n')
 
 idade_1.__dict__['outra'] = 'coisa'

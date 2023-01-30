@@ -39,4 +39,62 @@ print(camera.filmar())
 print(camera.fotografar())
 print(camera.filmar())
 print(camera.parar_filmagem())
-print(camera.fotografar())
+print(camera.fotografar(), '\n')
+
+###################################################################################################
+
+class Camera:
+    def __init__(self, name, recording=False):
+        self.name = name
+        self.recording = recording
+    
+    def record(self):
+        if self.recording:
+            print(f'{self.name} is already recording...')
+
+        else:
+            self.recording = True
+
+            print(f'{self.name} is now recording...')
+
+    def is_recording(self):
+        if self.recording:
+            print(f'{self.name} is recording...')
+        
+        else:
+            print(f'{self.name} is not recording...')
+
+    def stop_recording(self):
+        if self.recording:
+            self.recording = False
+
+            print(f'{self.name} stopped recording...')
+
+        else:
+            print(f'{self.name} was not recording...')
+
+    def take_photo(self):
+        if self.recording:
+            print(f'{self.name} cannot take a photo while recording...')
+        
+        else:
+            print(f'Say cheese!')
+
+camera = Camera('Camera')
+
+camera.is_recording()
+camera.stop_recording()
+camera.take_photo()
+camera.stop_recording()
+camera.record()
+camera.is_recording()
+camera.record()
+camera.take_photo()
+camera.stop_recording()
+camera.is_recording()
+camera.record()
+camera.is_recording()
+camera.take_photo()
+camera.record()
+camera.stop_recording()
+camera.take_photo()

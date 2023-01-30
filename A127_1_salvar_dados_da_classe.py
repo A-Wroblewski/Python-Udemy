@@ -1,6 +1,6 @@
 import json
 
-PATH = 'C:\\Users\\alvar\\Desktop\\VS\\Python\\A127_3_dados_da_classe.json'
+PATH = 'A127_3_dados_da_classe.json'
 
 class Person:
     def __init__(self, name, age, weight, height):

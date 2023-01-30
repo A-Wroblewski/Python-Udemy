@@ -12,7 +12,7 @@ class Endereco:
         self.rua = rua
         self.numero = numero
 
-    def __del__(self):
+    def __del__(self):  # método chamado ao terminar qualquer código (destrutor)
         print('Deletando', self.rua, self.numero)
 
 pessoa = Pessoa('Antedeguemon')
