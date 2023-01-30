@@ -9,7 +9,8 @@ class Person():  # classe genérica que terá classes herdeiras
         print('Classe Pessoa')
         print(self.name, self.surname, self.__class__.__name__, '\n')
 
-class Student(Person):  # classe que terá herdeiras passada nos parênteses
+# classe especializada que herda outra
+class Student(Person):  # classe genérica que terá herdeiras é passada nos parênteses
     def class_name(self):
         print('Classe Estudante')
         print(self.name, self.surname, self.__class__.__name__, '\n')
