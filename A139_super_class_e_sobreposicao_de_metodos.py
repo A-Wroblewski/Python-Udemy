@@ -12,7 +12,7 @@ string = String('banana')
 
 print(string.upper(), '\n')
 
-class A():  # classe A que herda o "object" (padrão).
+class A:  # classe A que herda o "object" (padrão).
     atributo_a = 'atributo a'
 
     def metodo(self):

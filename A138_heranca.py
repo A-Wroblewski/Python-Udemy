@@ -1,4 +1,4 @@
-class Person():  # classe genérica que terá classes herdeiras
+class Person:  # classe genérica que terá classes herdeiras
     banana = 'banana da pessoa'
 
     def __init__(self, name, surname):
