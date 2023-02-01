@@ -9,8 +9,7 @@
 
 import os
 
-path = 'C:\\Users\\alvar\\Desktop\\VS\\Python\\'
-path += 'A120_arquivos.txt'
+path = 'A120_arquivos.txt'
 
 # file = open(path, 'w')
 # file.close()
