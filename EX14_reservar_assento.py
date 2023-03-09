@@ -59,7 +59,7 @@ while True:
         print(f'Seat: {aux_row_input}{column_input}')
         print('-' * 20, '\n')
 
-        buy_another = input('Do you want to buy another ticket? (type "N" to cancel) \n')
+        buy_another = input('Do you want to buy another ticket? (type "N" to cancel | type anything else to continue) \n')
 
         if buy_another.upper() == 'N':
             break
