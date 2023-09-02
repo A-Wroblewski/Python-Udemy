@@ -31,6 +31,7 @@ class LogPrintMixin(Log):
 
 if __name__ == '__main__':
     # log = Log()  # classe Log levanta um erro pois não é para ser usada
+    # log._log('x')
 
     log_print = LogPrintMixin()
     log_print.log_success('message success')
