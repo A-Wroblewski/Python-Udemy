@@ -11,8 +11,10 @@ if nome != '' and idade != '':
         if letra == ' ':
             espacos += 1
 
-    print(f'Seu nome é {nome}!\n\n'
-          f'Seu nome invertido é {nome[::-1]}\n')
+    print(
+        f'Seu nome é {nome}!\n\n'
+        f'Seu nome invertido é {nome[::-1]}\n'
+    )
     
     if ' ' in nome.strip():
         if espacos <= 1:
@@ -27,7 +29,9 @@ if nome != '' and idade != '':
     else:
         print(f'Seu nome tem {len(nome) - espacos} letras.\n')
 
-    print(f'A primeira letra do seu nome é {nome[0]}\n\n'
-          f'A última letra do seu nome é {nome[-1]}')
+    print(
+        f'A primeira letra do seu nome é {nome[0]}\n\n'
+        f'A última letra do seu nome é {nome[-1]}'
+    )
 else:
     print('Você deixou algum campo vazio.')

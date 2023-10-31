@@ -1,4 +1,4 @@
-from A141_2_log import LogFileMixin
+from A18_2_log import LogFileMixin
 
 class Electronic:
     def __init__(self, name):

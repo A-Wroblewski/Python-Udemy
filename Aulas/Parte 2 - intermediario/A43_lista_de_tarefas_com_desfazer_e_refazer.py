@@ -25,7 +25,7 @@ def save_file():
     with open(file_saved_task_list, 'w', encoding='utf-8') as file:
         json.dump(task_list, file, indent=2)
 
-file_saved_task_list = 'A122_lista_de_tarefas_com_desfazer_e_refazer.json'
+file_saved_task_list = r'Aulas\Parte 2 - intermediario\A43_lista_de_tarefas_com_desfazer_e_refazer.json'
 
 def read_file(file):
     data = []

@@ -29,6 +29,8 @@ while True:
     if palavra_formatada == palavra_secreta:
         break
 
-print(f'\nParabéns, você conseguiu!'
-      f'\nA palavra secreta era "{palavra_secreta}".'
-      f'\nO seu número total de tentativas foi de {tentativas}.')
+print(
+    f'\nParabéns, você conseguiu!'
+    f'\nA palavra secreta era "{palavra_secreta}".'
+    f'\nO seu número total de tentativas foi de {tentativas}.'
+)

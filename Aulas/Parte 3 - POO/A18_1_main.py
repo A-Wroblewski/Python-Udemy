@@ -1,4 +1,4 @@
-from A141_4_eletronico import Smartphone
+from A18_4_eletronico import Smartphone
 
 galaxy = Smartphone('Galaxy')
 iphone = Smartphone('iPhone')
