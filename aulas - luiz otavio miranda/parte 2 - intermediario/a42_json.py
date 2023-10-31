@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 pessoa = {
     'Nome': 'Álvaro',
@@ -19,11 +20,13 @@ pessoa = {
     'nada': None,
 }
 
+path = Path(__file__).parent / 'a42_json.json'
+
 # encoding e ensure_ascii para mostrar texto corretamente
-with open('A121_json.json', 'w', encoding='utf-8') as file:
+with open(path, 'w', encoding='utf-8') as file:
     json.dump(pessoa, file, ensure_ascii=False, indent=2)  # armazena objetos em um json
 
-with open('A121_json.json', 'r', encoding='utf-8') as file:
+with open(path, 'r', encoding='utf-8') as file:
     dados = json.load(file)  # retorna um objeto do json
     
     for chave, valor in dados.items():

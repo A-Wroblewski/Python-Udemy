@@ -1,6 +1,6 @@
 from pathlib import Path
 
-LOG_FILE = Path(__file__).parent / 'A18_3_log.txt'
+LOG_FILE = Path(__file__).parent / 'a18_3_log.txt'
 
 class Log:  # abstração
     def _log(self, message):  # assinatura do método

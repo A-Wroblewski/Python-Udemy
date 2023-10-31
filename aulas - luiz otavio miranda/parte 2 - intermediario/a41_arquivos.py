@@ -8,8 +8,9 @@
 # b -> modo binário.
 
 import os
+from pathlib import Path
 
-path = 'A120_arquivos.txt'
+path = Path(__file__).parent / 'a41_arquivos.txt'
 
 # file = open(path, 'w')
 # file.close()
@@ -56,4 +57,4 @@ with open(path, 'w', encoding='utf-8') as file:
 print('Apagando o arquivo.')
 
 os.remove(path)  # remove o arquivo desejado
-# os.rename(path, 'A120_arquivos_renomeado')  # renomeia o arquivo
+# os.rename(path, 'a41_arquivos_renomeado')  # renomeia o arquivo

@@ -1,6 +1,7 @@
 import json
+from pathlib import Path
 
-PATH = r'Aulas\Parte 3 - POO\A04_3_dados_da_classe.json'
+PATH = Path(__file__).parent / 'a04_3_dados_da_classe.json'
 
 class Person:
     def __init__(self, name, age, weight, height):

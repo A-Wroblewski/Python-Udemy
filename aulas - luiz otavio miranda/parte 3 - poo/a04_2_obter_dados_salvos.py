@@ -1,5 +1,5 @@
 import json
-from A04_1_salvar_dados_da_classe import PATH, Person
+from a04_1_salvar_dados_da_classe import PATH, Person
 
 with open(PATH, 'r', encoding='utf-8') as file:
     people = json.load(file)
