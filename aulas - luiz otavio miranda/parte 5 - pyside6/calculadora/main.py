@@ -23,7 +23,7 @@ if __name__ == '__main__':
     window.vertical_layout.addWidget(display)
 
     # nova grid pra comportar os botões
-    buttons_grid = ButtonsGrid()
+    buttons_grid = ButtonsGrid(display)
     window.vertical_layout.addLayout(buttons_grid)
 
     # window_width = 300
