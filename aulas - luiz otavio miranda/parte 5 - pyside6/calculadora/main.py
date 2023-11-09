@@ -1,12 +1,12 @@
 import sys
 import app_style
 
-from main_window import MainWindow
+from PySide6.QtWidgets import QApplication
+
+from buttons import ButtonsGrid
 from display import Display
 from calculation_label import CalculationLabel
-from buttons import ButtonsGrid
-
-from PySide6.QtWidgets import QApplication
+from main_window import MainWindow
 
 if __name__ == '__main__':
     app = QApplication([])
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     window.vertical_layout.addWidget(display)
 
     # nova grid pra comportar os botões
-    buttons_grid = ButtonsGrid(display)
+    buttons_grid = ButtonsGrid(calculation_label, display)
     window.vertical_layout.addLayout(buttons_grid)
 
     # window_width = 300
