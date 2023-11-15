@@ -29,7 +29,12 @@ class ButtonsGrid(QGridLayout):
 
         self.calculation_label = calculation_label
         self.display = display
+
+        self._first_number = None
+        self._operator = None
+        self._second_number = None
         self._calculation = ''
+
         self._make_grid()
 
     def _make_grid(self):
@@ -65,7 +70,60 @@ class ButtonsGrid(QGridLayout):
         button_text = button.text()
 
         if button_text == 'C':
-            button.clicked.connect(self.display.clear)
+            button.clicked.connect(self._clear)
+
+        if button_text in '+-*/':
+            button.clicked.connect(self._operator_clicked)
+
+        if button_text == '=':
+            button.clicked.connect(self._solve_calculation)
+
+    def _operator_clicked(self):
+        button = self.sender()
+        button_text = button.text()
+        display_text = self.display.text()
+        self.display.clear()
+
+        if not is_valid_float(display_text) and self._first_number is None:
+            return
+
+        if self._first_number is None:
+            self._first_number = float(display_text)
+
+        self._operator = button_text
+        self.calculation = f'{self._first_number} {self._operator}'
+
+    def _solve_calculation(self):
+        display_text = self.display.text()
+
+        if not is_valid_float(display_text):
+            return
+
+        if self._operator and self._first_number is not None:
+            self._second_number = float(display_text)
+            self.calculation = f'{self._first_number} {self._operator} {self._second_number}'
+        else:
+            self._second_number = None
+            self.calculation = f'{self._first_number}'
+
+        result = 0.0
+
+        try:
+            result = eval(self.calculation)
+        except ZeroDivisionError:
+            pass
+
+        self.display.clear()
+        self.calculation_label.setText(f'{self.calculation} = {result}')
+        self._first_number = result
+        self._second_number = None
+
+    def _clear(self):
+        self._first_number = None
+        self._operator = None
+        self._second_number = None
+        self.calculation = ''
+        self.display.clear()
 
     @property
     def calculation(self):
