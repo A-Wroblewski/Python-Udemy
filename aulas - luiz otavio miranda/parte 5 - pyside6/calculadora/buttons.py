@@ -16,7 +16,7 @@ class Button(QPushButton):
 
 
 class ButtonsGrid(QGridLayout):
-    def __init__(self, calculation_label, display):
+    def __init__(self, window, calculation_label, display):
         super().__init__()
 
         self._grid_symbols = [
@@ -27,6 +27,7 @@ class ButtonsGrid(QGridLayout):
             ['0', '', '.', '='],
         ]
 
+        self.window = window
         self.calculation_label = calculation_label
         self.display = display
 
@@ -38,6 +39,12 @@ class ButtonsGrid(QGridLayout):
         self._make_grid()
 
     def _make_grid(self):
+        # self.display.input_pressed.connect(self._insert_button_text_to_display)
+        # self.display.esc_pressed.connect(self._clear)
+        # self.display.delete_pressed.connect(self.display.backspace)
+        # self.display.operator_pressed.connect(self._operator_clicked)
+        # self.display.enter_pressed.connect(self._solve_calculation)
+
         for row_index, list in enumerate(self._grid_symbols):
             for column_index, text in enumerate(list):
                 if text:
@@ -72,10 +79,13 @@ class ButtonsGrid(QGridLayout):
         if button_text == 'C':
             button.clicked.connect(self._clear)
 
-        if button_text in '+-*/':
+        elif button_text == '◀':
+            button.clicked.connect(self.display.backspace)
+
+        elif button_text in '+-*/^':
             button.clicked.connect(self._operator_clicked)
 
-        if button_text == '=':
+        elif button_text == '=':
             button.clicked.connect(self._solve_calculation)
 
     def _operator_clicked(self):
@@ -84,7 +94,11 @@ class ButtonsGrid(QGridLayout):
         display_text = self.display.text()
         self.display.clear()
 
-        if not is_valid_float(display_text) and self._first_number is None:
+        if button_text == '-' and display_text == '' and self._first_number is None:
+            self._first_number = 0
+
+        elif not is_valid_float(display_text) and self._first_number is None:
+            self._show_message_box_error('Você ainda não digitou nada.')
             return
 
         if self._first_number is None:
@@ -96,7 +110,8 @@ class ButtonsGrid(QGridLayout):
     def _solve_calculation(self):
         display_text = self.display.text()
 
-        if not is_valid_float(display_text):
+        if not is_valid_float(display_text) or self._first_number is None:
+            self._show_message_box_error('Conta incompleta.')
             return
 
         if self._operator and self._first_number is not None:
@@ -106,17 +121,25 @@ class ButtonsGrid(QGridLayout):
             self._second_number = None
             self.calculation = f'{self._first_number}'
 
-        result = 0.0
+        result = 'erro'
 
         try:
-            result = eval(self.calculation)
+            if '^' in self.calculation:
+                result = eval(self.calculation.replace('^', '**'))
+            else:
+                result = eval(self.calculation)
         except ZeroDivisionError:
-            pass
+            self._show_message_box_error('Divisão por zero.')
+        except OverflowError:
+            self._show_message_box_error('Resultado da conta muito grande.')
 
         self.display.clear()
         self.calculation_label.setText(f'{self.calculation} = {result}')
         self._first_number = result
         self._second_number = None
+
+        if result == 'erro':
+            self._first_number = None
 
     def _clear(self):
         self._first_number = None
@@ -124,6 +147,12 @@ class ButtonsGrid(QGridLayout):
         self._second_number = None
         self.calculation = ''
         self.display.clear()
+
+    def _show_message_box_error(self, text):
+        message_box = self.window.make_message_box()
+        message_box.setText(text)
+        message_box.setIcon(message_box.Icon.Critical)
+        message_box.exec()
 
     @property
     def calculation(self):

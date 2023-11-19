@@ -1,5 +1,5 @@
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout
+from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QMessageBox
 
 from images_paths import ICON_PATH
 
@@ -17,3 +17,10 @@ class MainWindow(QMainWindow):
 
         icon = QIcon(str(ICON_PATH))
         self.setWindowIcon(icon)
+
+    def adjust_size(self):
+        self.adjustSize()
+        self.setFixedSize(self.width(), self.height())
+
+    def make_message_box(self):
+        return QMessageBox(self)

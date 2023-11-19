@@ -23,22 +23,9 @@ if __name__ == '__main__':
     window.vertical_layout.addWidget(display)
 
     # nova grid pra comportar os botões
-    buttons_grid = ButtonsGrid(calculation_label, display)
+    buttons_grid = ButtonsGrid(window, calculation_label, display)
     window.vertical_layout.addLayout(buttons_grid)
 
-    # window_width = 300
-    # window_height = 350
-
-    # screen_resolution = app.primaryScreen().geometry()
-
-    # screen_width = screen_resolution.width()
-    # screen_height = screen_resolution.height()
-
-    # x = (screen_width - window_width) // 2
-    # y = (screen_height - window_height) // 2
-
-    # window.setGeometry(x, y, window_width, window_height)
-    # window.setFixedSize(window_width, window_height)
-
+    window.adjust_size()
     window.show()
     sys.exit(app.exec())
