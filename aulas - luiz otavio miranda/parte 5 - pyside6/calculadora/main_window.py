@@ -1,7 +1,7 @@
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QMessageBox
 
-from images_paths import ICON_PATH
+from utils.pyinstaller_media import resource_path
 
 
 class MainWindow(QMainWindow):
@@ -15,7 +15,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(central_widget)
         self.setWindowTitle('Calculadora')
 
-        icon = QIcon(str(ICON_PATH))
+        icon_path = resource_path('calculator.ico')
+        icon = QIcon(icon_path)
         self.setWindowIcon(icon)
 
     def adjust_size(self):
